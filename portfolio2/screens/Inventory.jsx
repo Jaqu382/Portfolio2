@@ -56,15 +56,15 @@ import MainInventory from "../components/MainInventory";
 
 export default function Inventory({ route, navigation }) {
     const {username} = route.params;
-    let [newInventory,setNewInventory] = useState([...inventory])
+    let [newInventory,setNewInventory] = useState([])
     return (
     <View style = {styles.container}>
-      <MainInventory username={username} inventory ={newInventory}></MainInventory>
+      <MainInventory username={username} inventory ={inventory}></MainInventory>
       <View style={styles.navigator}>
         <Button
         style = {styles.Button}
           title="Manage Stock"
-          onPress={() => navigation.navigate("Stock" , {newInventory, setNewInventory, username})}
+          onPress={() => navigation.navigate("Stock" , {inventory, newInventory, setNewInventory, username})}
         ></Button>
         <Button 
         style ={styles.Button}

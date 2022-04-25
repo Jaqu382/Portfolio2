@@ -4,17 +4,18 @@ import { Button, Card } from "react-native-elements";
 import StockItem from "./StockItem";
 
 export default function MainStock(props) {
-  let { newInventory, setNewInventory } = props;
+  let { inventory, newInventory, setNewInventory } = props;
   return (
     <View style={styles.container}>
       <FlatList
-        data={newInventory}
+        data={inventory}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           return (
             <>
               <StockItem
                 item={item}
+                inventory={inventory}
                 newInventory={newInventory}
                 setNewInventory={setNewInventory}
               ></StockItem>

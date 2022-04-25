@@ -5,9 +5,12 @@ import { Button, Card, CheckBox, Input } from "react-native-elements";
 export default function StockItem(props) {
   let { item, newInventory, setNewInventory } = props;
   let [currentQty, setCurrentQty] = useState(item.qty);
-  let [modifyQty, setModifyQty] = useState(0);
   let [newStockItem, setNewStockItem] = useState({});
   let [isOnSale, setIsOnSale] = useState(false);
+
+  useEffect(() => {
+    setCurrentQty(item.qty);
+  });
   return (
     <Card style={styles.container}>
       <View>
@@ -26,23 +29,21 @@ export default function StockItem(props) {
             setIsOnSale(!isOnSale);
           }}
         ></CheckBox>
-        <Input
-          label="Qty to add or remove"
-          keyboardType="numeric"
-          onChangeText={(value) => {
-            setModifyQty(value);
-          }}
-        ></Input>
       </View>
       <Button
         style={styles.inventoryButton}
         title="Add Inventory"
         onPress={() => {
-          setNewStockItem(item);
-          setNewInventory([...newInventory, newStockItem]);
+          console.log("adding to inventory");
         }}
       ></Button>
-      <Button style={styles.inventoryButton} title="Remove Inventory"></Button>
+      <Button
+        style={styles.inventoryButton}
+        title="Remove Inventory"
+        onPress={() => {
+          console.log("Removing from inventory");
+        }}
+      ></Button>
     </Card>
   );
 }

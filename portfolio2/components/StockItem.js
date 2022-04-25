@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Button, Card, CheckBox, Input } from "react-native-elements";
+import Inventory from "../screens/Inventory";
 
 export default function StockItem(props) {
-  let { item, newInventory, setNewInventory } = props;
-  let [currentQty, setCurrentQty] = useState(item.qty);
+  let { item, inventory, newInventory, setNewInventory } = props;
   let [newStockItem, setNewStockItem] = useState({});
-  let [isOnSale, setIsOnSale] = useState(false);
+  let [changed, setChanged] = useState(false);
 
-  useEffect(() => {
-    setCurrentQty(item.qty);
+  let addStock = useCallback((addedStock) => {
+    setChanged(true);
+    addedStock.qty = addedStock.qty + 1;
+    setNewInventory(addedStock);
+  });
+  let removeStock = useCallback((removedStock) => {
+    setChanged(true);
+    removedStock.qty = removedStock.qty - 1;
+    setNewInventory(removedStock);
   });
   return (
     <Card style={styles.container}>
@@ -17,31 +24,27 @@ export default function StockItem(props) {
         <Image source={item.image} style={styles.Image}></Image>
         <Card.Title>{item.bookName}</Card.Title>
       </View>
-      <View style={styles.desc}>
-        <Text>In Inventory: {currentQty}</Text>
+      <View style={changed ? styles.changed : styles.desc}>
         <Text>Author: {item.author}</Text>
         <Text>Price: ${item.price}</Text>
+        <Input label="Set new price" placeholder="20"></Input>
         <Text>Sale: %{item.discount * 100}</Text>
-        <CheckBox
-          title="Sale"
-          checked={isOnSale}
-          onPress={() => {
-            setIsOnSale(!isOnSale);
-          }}
-        ></CheckBox>
+        <Input label="Set new discount" placeholder="5"></Input>
+        <CheckBox title="Is on Sale?"></CheckBox>
+        <Text>Remaining inventory: {item.qty}</Text>
       </View>
       <Button
         style={styles.inventoryButton}
         title="Add Inventory"
         onPress={() => {
-          console.log("adding to inventory");
+          addStock(item);
         }}
       ></Button>
       <Button
         style={styles.inventoryButton}
         title="Remove Inventory"
         onPress={() => {
-          console.log("Removing from inventory");
+          removeStock(item);
         }}
       ></Button>
     </Card>
@@ -70,6 +73,11 @@ const styles = StyleSheet.create({
   desc: {
     alignItems: "center",
     fontSize: 14,
+  },
+  changed: {
+    alignItems: "center",
+    fontSize: 14,
+    color: "Green",
   },
   inventoryButton: {
     width: 100,

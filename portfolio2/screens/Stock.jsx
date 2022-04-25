@@ -4,10 +4,10 @@ import { Button } from "react-native-elements";
 import MainStock from "../components/MainStock";
 
 export default function Menu({ route, navigation }) {
-    let {inventory, username} = route.params;
+    let {newInventory, setNewInventory, username} = route.params;
     return(
         <View>
-            <MainStock inventory = {inventory}></MainStock>
+            <MainStock newInventory = {newInventory} setNewInventory = {setNewInventory}></MainStock>
             <View style={styles.navigator}>
         <Button
         style = {styles.Button}

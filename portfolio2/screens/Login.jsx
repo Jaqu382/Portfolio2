@@ -14,16 +14,17 @@ export default function Login({ route, navigation }) {
     return (
       <View style={styles.container}>
         <Card>
-          <Card.Title>Login:</Card.Title>
+          <Card.Title>Admin:</Card.Title>
           <Input label="Username" onChangeText={(value) => {setUsername(value)}}></Input>
           <Input label="Password" secureTextEntry = 'true' onChangeText={(value) => {setPassword(value)}}></Input>
           <Text style ={styles.error}>{error}</Text>
           <Card.Divider></Card.Divider>
           <Button title="Login" onPress={() => {
-              if(username == user.username && password == user.password) {navigation.navigate('Home',{username: username})}
+              if(username == user.username && password == user.password) {navigation.navigate('Inventory',{username: username})}
               else setError('Your username or password is incorrect')
           }}></Button>
         </Card>
+        <Text>Username: {user.username}, Password: {user.password}</Text>
       </View>
     );
   }

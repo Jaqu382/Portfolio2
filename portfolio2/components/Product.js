@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-import { Button, Card } from "react-native-elements";
+import { Card } from "react-native-elements";
 
-export default function Product({ item }) {
+export default function Product(props) {
+  const { item } = props;
   const [newPrice, setNewPrice] = useState("");
   useEffect(() => {
     if (item.sale) setNewPrice(item.price - item.price * item.discount);
@@ -15,10 +16,12 @@ export default function Product({ item }) {
         <Card.Title>{item.bookName}</Card.Title>
       </View>
       <View style={styles.desc}>
-        <Text>{item.author}</Text>
-        <Text style={item.sale ? styles.onSale : undefined}>${item.price}</Text>
+        <Text>Author: {item.author}</Text>
+        <Text style={item.sale ? styles.onSale : undefined}>
+          Price: ${item.price}
+        </Text>
         <Text style={styles.sale}>{newPrice}</Text>
-        <Button title="Add to cart" style={styles.Button}></Button>
+        <Text>remaining: {item.qty}</Text>
       </View>
     </Card>
   );

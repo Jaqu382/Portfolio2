@@ -15,3 +15,7 @@ This application is supposed to be an inventory management system. Users should 
 There are three screens the user can interact with, a login screen, an Inventory screen, and a Stock screen.
 
 While initially there was only supposed to be two components, I expanded to four during implementation. MainInventory and MainStock render a list of components. Product renders all items in inventory and stockItem renders interactible cards that can be used to add or remove items from inventory.
+
+Interactions to try out: Logging in (correctly and incorrectly),viewing inventory, changing price,discount,sales status, and quantity. Seeing changes reflected in main inventory screen
+
+If I could improve on the design, I would add the ability to add create new items.

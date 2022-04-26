@@ -6,7 +6,9 @@ export default function Product(props) {
   const { item } = props;
   const [newPrice, setNewPrice] = useState("");
   useEffect(() => {
-    if (item.sale) setNewPrice(item.price - item.price * item.discount);
+    item.sale
+      ? setNewPrice(item.price - item.price * item.discount)
+      : setNewPrice("");
   });
 
   return (

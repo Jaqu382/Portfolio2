@@ -4,51 +4,53 @@ import { Button, Card, CheckBox, Input } from "react-native-elements";
 
 export default function StockItem(props) {
   let { item, inventory, newInventory, setNewInventory } = props;
+  let [updatedQty, setUpdatedQty] = useState(item.qty);
+  let [updatedPrice, setUpdatedPrice] = useState(item.price);
+  let [updateDiscount, setUpdateDiscount] = useState(item.discount);
   let [newPrice, setNewPrice] = useState();
   let [newDiscount, setNewDiscount] = useState();
   let [onSale, setOnSale] = useState(item.sale);
   const addStock = useCallback((addedStock) => {
     addedStock.qty = addedStock.qty + 1;
+    setUpdatedQty(updatedQty + 1);
     setNewInventory(addedStock);
   });
   const removeStock = useCallback((removedStock) => {
     removedStock.qty = removedStock.qty - 1;
     setNewInventory(removedStock);
+    setUpdatedQty(updatedQty - 1);
   });
   const changePrice = useCallback((newPrice, newItem) => {
     let priceContainer;
     if (newPrice == NaN) {
-      priceContainer = 20;
+      priceContainer = newItem.price;
       newItem.price = priceContainer;
-      setNewInventory(newItem);
     } else if (newPrice == undefined) {
-      priceContainer = 20;
+      priceContainer = newItem.price;
       newItem.price = priceContainer;
-      setNewInventory(newItem);
     } else {
       priceContainer = parseInt(newPrice);
       newItem.price = priceContainer;
-      setNewInventory(newItem);
     }
+    setNewInventory(newItem);
+    setUpdatedPrice(priceContainer);
   });
   const changeDiscount = useCallback((newDiscount, newItem) => {
     let discountContainer;
     if (newDiscount == NaN) {
-      discountContainer = 5;
-      newItem.discount = discountContainer / 100;
-      setNewInventory(newItem);
+      newItem.discount = newItem.discount;
     } else if (newPrice == undefined) {
-      discountContainer = 5;
-      newItem.price = discountContainer / 100;
-      setNewInventory(newItem);
+      newItem.discount = newItem.discount;
     } else {
-      priceContainer = parseInt(newPrice);
-      newItem.price = discountContainer / 100;
-      setNewInventory(newItem);
+      discountContainer = parseInt(newPrice);
+      newItem.discount = discountContainer / 100;
     }
+    console.log(newItem);
+    setNewInventory(newItem);
   });
   const toggleSale = useCallback((newItem) => {
     newItem.sale = !newItem.sale;
+    setOnSale(newItem.sale);
     setNewInventory(newItem);
   });
   return (
@@ -59,7 +61,7 @@ export default function StockItem(props) {
       </View>
       <View style={styles.desc}>
         <Text>Author: {item.author}</Text>
-        <Text>Price: ${item.price}</Text>
+        <Text>Price: ${updatedPrice}</Text>
         <Input
           label="Set new price"
           placeholder="20"
@@ -73,6 +75,11 @@ export default function StockItem(props) {
           }}
         ></Button>
         <Text>Sale: %{item.discount * 100}</Text>
+        <Input
+          label="Set new discount"
+          placeholder="5"
+          onChangeText={(value) => setNewDiscount(value)}
+        ></Input>
         <Button
           style={styles.inventoryButton}
           title="Set Discount"
@@ -80,17 +87,12 @@ export default function StockItem(props) {
             changeDiscount(newDiscount, item);
           }}
         ></Button>
-        <Input
-          label="Set new discount"
-          placeholder="5"
-          onChangeText={(value) => setNewDiscount(value)}
-        ></Input>
         <CheckBox
           title="Is on Sale?"
           checked={onSale}
           onPress={() => toggleSale(item)}
         ></CheckBox>
-        <Text>Remaining inventory: {item.qty}</Text>
+        <Text>Remaining inventory: {updatedQty}</Text>
         <Button
           style={styles.inventoryButton}
           title="Add Inventory"

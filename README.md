@@ -18,4 +18,4 @@ While initially there was only supposed to be two components, I expanded to four
 
 Interactions to try out: Logging in (correctly and incorrectly),viewing inventory, changing price,discount,sales status, and quantity. Seeing changes reflected in main inventory screen
 
-If I could improve on the design, I would add the ability to add create new items.
+If I could improve on the design, I would add the ability for users add create new items.

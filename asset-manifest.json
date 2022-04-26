@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/Portfolio2/static/js/app.0fa18a4e.chunk.js",
-    "app.js.map": "/Portfolio2/static/js/app.0fa18a4e.chunk.js.map",
+    "app.js": "/Portfolio2/static/js/app.dd36e5be.chunk.js",
+    "app.js.map": "/Portfolio2/static/js/app.dd36e5be.chunk.js.map",
     "runtime~app.js": "/Portfolio2/static/js/runtime~app.48a9d726.js",
     "runtime~app.js.map": "/Portfolio2/static/js/runtime~app.48a9d726.js.map",
-    "static/js/2.e0753b33.chunk.js": "/Portfolio2/static/js/2.e0753b33.chunk.js",
-    "static/js/2.e0753b33.chunk.js.map": "/Portfolio2/static/js/2.e0753b33.chunk.js.map",
+    "static/js/2.9281c3e3.chunk.js": "/Portfolio2/static/js/2.9281c3e3.chunk.js",
+    "static/js/2.9281c3e3.chunk.js.map": "/Portfolio2/static/js/2.9281c3e3.chunk.js.map",
     "fonts/AntDesign.ttf": "/Portfolio2/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/Portfolio2/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/Portfolio2/./fonts/Feather.ttf",
@@ -24,7 +24,7 @@
     "index.html": "/Portfolio2/index.html",
     "manifest.json": "/Portfolio2/manifest.json",
     "serve.json": "/Portfolio2/serve.json",
-    "static/js/2.e0753b33.chunk.js.LICENSE.txt": "/Portfolio2/static/js/2.e0753b33.chunk.js.LICENSE.txt",
+    "static/js/2.9281c3e3.chunk.js.LICENSE.txt": "/Portfolio2/static/js/2.9281c3e3.chunk.js.LICENSE.txt",
     "static/media/aPhoLoveStory.jpg": "/Portfolio2/static/media/aPhoLoveStory.68018e15.jpg",
     "static/media/bell.png": "/Portfolio2/static/media/bell.cf04af27.png",
     "static/media/heart.png": "/Portfolio2/static/media/heart.23b5c2c0.png",
@@ -37,7 +37,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.48a9d726.js",
-    "static/js/2.e0753b33.chunk.js",
-    "static/js/app.0fa18a4e.chunk.js"
+    "static/js/2.9281c3e3.chunk.js",
+    "static/js/app.dd36e5be.chunk.js"
   ]
 }

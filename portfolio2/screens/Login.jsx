@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Button, Card, Input } from "react-native-elements";
 
 const user = {
-    username: "D",
-    password: "4",
+    username: "DIG",
+    password: "4639C",
   };
 
 export default function Login({ route, navigation }) {

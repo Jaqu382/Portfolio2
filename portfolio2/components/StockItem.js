@@ -22,10 +22,7 @@ export default function StockItem(props) {
   });
   const changePrice = useCallback((newPrice, newItem) => {
     let priceContainer;
-    if (newPrice == NaN) {
-      priceContainer = newItem.price;
-      newItem.price = priceContainer;
-    } else if (newPrice == undefined) {
+    if (newPrice == undefined) {
       priceContainer = newItem.price;
       newItem.price = priceContainer;
     } else {
@@ -37,15 +34,15 @@ export default function StockItem(props) {
   });
   const changeDiscount = useCallback((newDiscount, newItem) => {
     let discountContainer;
-    if (newDiscount == NaN) {
-      newItem.discount = newItem.discount;
-    } else if (newPrice == undefined) {
-      newItem.discount = newItem.discount;
+    if (newDiscount == undefined) {
+      discountContainer = newItem.discount;
+      newItem.discount = discountContainer;
+      setUpdateDiscount(discountContainer);
     } else {
-      discountContainer = parseInt(newPrice);
+      discountContainer = parseInt(newDiscount);
       newItem.discount = discountContainer / 100;
+      setUpdateDiscount(discountContainer / 100);
     }
-    console.log(newItem);
     setNewInventory(newItem);
   });
   const toggleSale = useCallback((newItem) => {

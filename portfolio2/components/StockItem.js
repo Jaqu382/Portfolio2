@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Button, Card, CheckBox, Input } from "react-native-elements";
 
